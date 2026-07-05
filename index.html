@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio</title>
+  
+  <!-- Loading React, ReactDOM, and Babel from CDNs -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f172a;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: #1e293b;
+      padding: 20px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #334155;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+
+    nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    nav a:hover, nav a.active {
+      color: #38bdf8;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    section {
+      padding: 40px 0;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #38bdf8;
+      border-left: 4px solid #38bdf8;
+      padding-left: 10px;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 0;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #f8fafc;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+
+    /* Skills Badges */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .skill-badge {
+      background-color: #1e293b;
+      color: #38bdf8;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      border: 1px solid #334155;
+    }
+
+    /* Projects Cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .project-card {
+      background-color: #1e293b;
+      border-radius: 8px;
+      padding: 20px;
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .project-card h3 {
+      color: #f8fafc;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      flex-grow: 1;
+    }
+
+    .project-link {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Resume Section */
+    .resume-item {
+      margin-bottom: 25px;
+    }
+
+    .resume-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+
+    .resume-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #f8fafc;
+    }
+
+    .resume-date {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    .resume-org {
+      color: #38bdf8;
+      font-style: italic;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function App() {
+      const [activeSection, setActiveSection] = useState('home');
+
+      // Static Data Arrays to showcase your profile details elegantly
+      const profile = {
+        name: "Your Name Here",
+        title: "Frontend Web Developer",
+        bio: "Passionate developer crafting structured, responsive web applications using modern programming stacks."
+      };
+
+      const skills = ["HTML5", "CSS3", "JavaScript (ES6+)", "React.js", "Git & GitHub", "REST APIs", "Responsive Design"];
+
+      const projects = [
+        {
+          title: "Interactive Music Player",
+          description: "A modern, responsive dashboard interface interacting with the HTML5 Audio API for managing streaming track controls.",
+          link: "#"
+        },
+        {
+          title: "Dynamic Weather App",
+          description: "An asynchronous dashboard pulling data hooks dynamically via async fetch requests to the external OpenWeather API platform.",
+          link: "#"
+        },
+        {
+          title: "React Tic-Tac-Toe",
+          description: "A pure stateful component milestone game tracking dual-user initiative logic configurations and auto win-state sweeps.",
+          link: "#"
+        }
+      ];
+
+      const resume = [
+        {
+          title: "Web Development Student",
+          org: "μLearn Foundation Training",
+          date: "2026 - Present",
+          details: "Building interactive standalone assets, refining application optimization targets, and earning portfolio badges across responsive core milestones."
+        },
+        {
+          title: "Open Source Contributor",
+          org: "GitHub Portfolio Spaces",
+          date: "2025 - 2026",
+          details: "Engineered logic tracking controllers, established dynamic layout adjustments, and deployed production-ready applications via continuous cloud tracks."
+        }
+      ];
+
+      const scrollToSection = (id) => {
+        setActiveSection(id);
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+      };
+
+      return (
+        <div>
+          <header>
+            <div className="logo">{profile.name}</div>
+            <nav>
+              <a className={activeSection === 'home' ? 'active' : ''} onClick={() => scrollToSection('home')}>Home</a>
+              <a className={activeSection === 'skills' ? 'active' : ''} onClick={() => scrollToSection('skills')}>Skills</a>
+              <a className={activeSection === 'projects' ? 'active' : ''} onClick={() => scrollToSection('projects')}>Projects</a>
+              <a className={activeSection === 'resume' ? 'active' : ''} onClick={() => scrollToSection('resume')}>Resume</a>
+            </nav>
+          </header>
+
+          <div className="container">
+            {/* Hero Profile Intro Section */}
+            <section id="home" className="hero">
+              <h1>Hi, I'm {profile.name}</h1>
+              <p>{profile.title}</p>
+              <div style={{color: '#94a3b8', maxWidth: '600px', margin: '0 auto'}}>{profile.bio}</div>
+            </section>
+
+            {/* Skills Track Section */}
+            <section id="skills">
+              <h2>Skills & Expertises</h2>
+              <div className="skills-grid">
+                {skills.map((skill, index) => (
+                  <span key={index} className="skill-badge">{skill}</span>
+                ))}
+              </div>
+            </section>
+
+            {/* Projects Hub Section */}
+            <section id="projects">
+              <h2>Showcase Projects</h2>
+              <div className="projects-grid">
+                {projects.map((project, index) => (
+                  <div key={index} className="project-card">
+                    <div>
+                      <h3>{project.title}</h3>
+                      <p>{project.description}</p>
+                    </div>
+                    <a href={project.link} className="project-link" target="_blank" rel="noreferrer">View Live Project →</a>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Resume Details Section */}
+            <section id="resume">
+              <h2>Education & Experience</h2>
+              <div style={{marginTop: '20px'}}>
+                {resume.map((item, index) => (
+                  <div key={index} className="resume-item">
+                    <div className="resume-header">
+                      <div className="resume-title">{item.title}</div>
+                      <div className="resume-date">{item.date}</div>
+                    </div>
+                    <div className="resume-org">{item.org}</div>
+                    <p style={{color: '#94a3b8', fontSize: '0.95rem'}}>{item.details}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+
+</body>
+</html>
