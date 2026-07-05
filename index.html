@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aaron Benny Philip — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #f7f5ee;
+    --paper-2: #efece0;
+    --ink: #2a2e28;
+    --ink-soft: #5c6156;
+    --line: #d8d2bd;
+    --brass: #9c7c3f;
+    --brass-dark: #7a5f2c;
+    --forest: #33473c;
+    --forest-soft: #e3e9e2;
+    --focus: #7fa89a;
+  }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family:'EB Garamond', Georgia, serif;
+    font-size: 1.08rem;
+    line-height:1.65;
+  }
+  a{ color: var(--forest); }
+  ::selection{ background: var(--brass); color:#fff; }
+
+  .container{
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 1.6rem;
+  }
+
+  header.hero{
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--line);
+    text-align:center;
+  }
+  header.hero .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color: var(--brass-dark);
+    margin-bottom: 1.1rem;
+  }
+  header.hero h1{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    margin: 0 0 .5rem;
+    color: var(--ink);
+    letter-spacing:.01em;
+  }
+  header.hero .role{
+    font-family:'EB Garamond', serif;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    margin: 0 0 1.6rem;
+  }
+  header.hero .rule{
+    width: 60px;
+    height: 2px;
+    background: var(--brass);
+    margin: 0 auto 1.6rem;
+  }
+  nav.hero-links{
+    display:flex;
+    justify-content:center;
+    gap: 1.5rem;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.8rem;
+    letter-spacing:.05em;
+  }
+  nav.hero-links a{
+    text-decoration:none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom:2px;
+  }
+  nav.hero-links a:hover{ border-color: var(--brass); color: var(--ink); }
+
+  section{ padding: 3.6rem 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type{ border-bottom:none; }
+
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color: var(--brass-dark);
+    margin-bottom:.6rem;
+  }
+  .section-title{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size: 1.9rem;
+    margin: 0 0 1.4rem;
+    color: var(--ink);
+  }
+
+  .about p{ max-width: 680px; color: var(--ink); }
+  .about .highlight{
+    color: var(--forest);
+    font-weight:500;
+  }
+
+  .skills-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap: .7rem;
+  }
+  .skill-pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.82rem;
+    padding: .5rem 1rem;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    color: var(--ink);
+  }
+
+  .timeline{ display:flex; flex-direction:column; gap: 1.6rem; }
+  .timeline-item{
+    display:grid;
+    grid-template-columns: 150px 1fr;
+    gap: 1.2rem;
+  }
+  @media (max-width: 560px){
+    .timeline-item{ grid-template-columns: 1fr; gap:.3rem; }
+  }
+  .timeline-item .period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.78rem;
+    color: var(--ink-soft);
+    padding-top:.2rem;
+  }
+  .timeline-item .detail h3{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    font-size: 1.15rem;
+    margin: 0 0 .25rem;
+    color: var(--ink);
+  }
+  .timeline-item .detail .meta{
+    font-size:.95rem;
+    color: var(--ink-soft);
+    margin: 0 0 .3rem;
+  }
+  .timeline-item .detail .score{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.8rem;
+    color: var(--forest);
+    background: var(--forest-soft);
+    display:inline-block;
+    padding:.15rem .55rem;
+    border-radius:2px;
+  }
+
+  .projects-note{
+    border: 1px dashed var(--line);
+    border-radius: 3px;
+    padding: 1.6rem 1.5rem;
+    text-align:center;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .projects-note .icon{ font-size:1.4rem; display:block; margin-bottom:.5rem; }
+
+  .contact-box{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 1rem;
+  }
+  .contact-item{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem;
+    background: var(--paper-2);
+    border:1px solid var(--line);
+    padding:.7rem 1.1rem;
+    border-radius:2px;
+    color: var(--ink);
+    text-decoration:none;
+  }
+  .contact-item:hover{ border-color: var(--brass); }
+  .contact-note{
+    margin-top:1rem;
+    font-size:.85rem;
+    color: var(--ink-soft);
+    font-style:italic;
+  }
+
+  footer{
+    text-align:center;
+    padding: 2.4rem 0 3rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.72rem;
+    letter-spacing:.05em;
+    color: var(--ink-soft);
+  }
+
+  a:focus-visible, .skill-pill:focus-visible{
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function Hero(){
+      return (
+        <header className="hero">
+          <div className="container">
+            <div className="eyebrow">Portfolio</div>
+            <h1>Aaron Benny Philip</h1>
+            <p className="role">Computer Science &amp; Engineering Undergraduate</p>
+            <div className="rule"></div>
+            <nav className="hero-links">
+              <a href="#about">About</a>
+              <a href="#skills">Skills</a>
+              <a href="#education">Education</a>
+              <a href="#projects">Projects</a>
+              <a href="#contact">Contact</a>
+            </nav>
+          </div>
+        </header>
+      );
+    }
+
+    function About(){
+      return (
+        <section id="about">
+          <div className="container about">
+            <div className="section-label">About</div>
+            <h2 className="section-title">Who I Am</h2>
+            <p>
+              I'm a second-year <span className="highlight">Computer Science and Engineering</span> undergraduate
+              at <span className="highlight">College of Engineering, Chengannur</span>. I'm still early in my
+              journey and learning steadily, with a growing interest in <span className="highlight">web development</span> and{' '}
+              <span className="highlight">artificial intelligence</span>. I enjoy building things, understanding how
+              systems work under the hood, and picking up new tools along the way.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function Skills(){
+      const skills = ["Git", "GitHub", "Python", "C", "Java", "JavaScript", "CSS"];
+      return (
+        <section id="skills">
+          <div className="container">
+            <div className="section-label">Skills</div>
+            <h2 className="section-title">What I Work With</h2>
+            <div className="skills-grid">
+              {skills.map((s) => (
+                <span className="skill-pill" key={s}>{s}</span>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Education(){
+      const items = [
+        {
+          period: "2024 — Present",
+          title: "B.Tech, Computer Science & Engineering",
+          meta: "College of Engineering, Chengannur — 2nd Year (Ongoing)",
+          score: null
+        },
+        {
+          period: "2022 — 2024",
+          title: "Higher Secondary Education",
+          meta: "GPHSS Kulanada",
+          score: "99.92%"
+        },
+        {
+          period: "Up to 2022",
+          title: "SSLC (10th Grade)",
+          meta: "St. Thomas English Medium High School, Pandalam",
+          score: "99.38%"
+        }
+      ];
+      return (
+        <section id="education">
+          <div className="container">
+            <div className="section-label">Education</div>
+            <h2 className="section-title">Academic Background</h2>
+            <div className="timeline">
+              {items.map((it) => (
+                <div className="timeline-item" key={it.title}>
+                  <div className="period">{it.period}</div>
+                  <div className="detail">
+                    <h3>{it.title}</h3>
+                    <p className="meta">{it.meta}</p>
+                    {it.score && <span className="score">{it.score}</span>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Projects(){
+      return (
+        <section id="projects">
+          <div className="container">
+            <div className="section-label">Projects</div>
+            <h2 className="section-title">Building &amp; Learning</h2>
+            <div className="projects-note">
+              <span className="icon">🌱</span>
+              I'm actively working on projects as I learn — this space will be updated soon
+              with things worth sharing. Check back later, or see my GitHub for ongoing work.
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    function Contact(){
+      return (
+        <section id="contact">
+          <div className="container">
+            <div className="section-label">Contact</div>
+            <h2 className="section-title">Get in Touch</h2>
+            <div className="contact-box">
+              <a className="contact-item" href="mailto:your.email@example.com">✉ your.email@example.com</a>
+              <a className="contact-item" href="https://github.com/your-username" target="_blank" rel="noreferrer">⌥ github.com/your-username</a>
+            </div>
+            <p className="contact-note">
+              Replace the placeholders above with your real email and GitHub link before publishing.
+            </p>
+          </div>
+        </section>
+      );
+    }
+
+    function Footer(){
+      return (
+        <footer>
+          © {new Date().getFullYear()} Aaron Benny Philip · Built with React
+        </footer>
+      );
+    }
+
+    function App(){
+      return (
+        <React.Fragment>
+          <Hero />
+          <About />
+          <Skills />
+          <Education />
+          <Projects />
+          <Contact />
+          <Footer />
+        </React.Fragment>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
